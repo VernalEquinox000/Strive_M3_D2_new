@@ -11,7 +11,7 @@ async function loadSongs(artist) {
 }
 
 
-let artist = ["clash", "kraftwerk", "mars volta", "smiths", "tool", "zu"]
+let artists = ["clash", "kraftwerk", "mars volta", "smiths", "tool", "zu"]
 
 
 
@@ -22,6 +22,6 @@ songsList.innerHTML=""
     artists.forEach(async artist => {
         let songs = await loadSongs(artist)
         songsList.innerHTML += songs.map(song =>
-            `<li>$(song.title)</li>`).join("")
+            `<p>$(song.title)</p>`).join("")
     })
 }
