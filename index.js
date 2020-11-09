@@ -1,11 +1,11 @@
 const loadAlbums = function (artist) {
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+artist, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "8922e7eb38msha406b3662407a30p14661djsn13118198de68",
-		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
-	}
-})
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "8922e7eb38msha406b3662407a30p14661djsn13118198de68",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+        }
+    })
         .then(response => response.json())
         .then(apiResponse => {
 
@@ -44,12 +44,12 @@ const loadAlbums = function (artist) {
             //albumRow.setAttribute(("style", "overflow-x: scroll; overflow-y: scroll; white-space: nowrap;"))
             albumDiv.appendChild(albumRow);
 
-              //albumsLocal = JSON.parse(localStorage.getItem("albums"));
+            //albumsLocal = JSON.parse(localStorage.getItem("albums"));
             for (let i = 0; i < 6; i++) {
                 let song = songs[i];
-    let albumCol = document.createElement("div");
-    albumCol.classList.add("col");
-    albumCol.innerHTML += `<div class="card mx-auto" style="width: 15 rem; display:inline block">
+                let albumCol = document.createElement("div");
+                albumCol.classList.add("col");
+                albumCol.innerHTML += `<div class="card mx-auto" style="width: 15 rem; display:inline block">
                               <a href="album.html?${song.album.title}"
                                 ><img src="${song.album.cover_big}" class="card-img-top" alt="..."
                               />
@@ -59,12 +59,45 @@ const loadAlbums = function (artist) {
                             <h6 class="card-title"><strong>${song.title}</strong></h6>
                             <h6><strong>${song.artist.name}</strong></h6>
                           </div>`;
-    albumRow.appendChild(albumCol);
-  }
-})
+                albumRow.appendChild(albumCol);
+                
+
+                
+            }
+        })
 	
 .catch(err => {
 	console.error(err);
 });
 
 }
+
+
+
+
+
+const albumsList = function (artist) {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "8922e7eb38msha406b3662407a30p14661djsn13118198de68",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+        }
+    })
+        .then(response => response.json())
+        .then(apiResponse => {
+
+            let songs = apiResponse.data;
+
+            for (let i = 0; i < 6; i++) {
+                let song = songs[i];
+
+                let albumList = document.querySelector("#album-list");
+                albumList.innerHTML += `<li>"${song.album.title}</li>`
+            }
+
+            /* let albumList = document.getElementById("#album-list");
+            albumList.style.display = "block"; */
+    
+        })
+    }
