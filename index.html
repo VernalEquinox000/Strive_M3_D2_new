@@ -17,6 +17,19 @@
   <link rel="stylesheet" href="main.css" />
 
   <title>Album Page</title>
+  <style>
+  /*   .row {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
+    }
+
+  .col {
+    display: inline-block;
+  }
+ */
+
+  </style>
 </head>
 
 <body>
@@ -150,7 +163,8 @@
     <main class="tab-content" id="v-pills-tabContent">
 
 
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
+>
         <!-- albums -->
         <div class="albums px-5"></div>
       </div>
@@ -163,10 +177,10 @@
       <div class="tab-pane fade albums" id="v-pills-createPlaylist" role="tabpanel"
         aria-labelledby="v-pills-createPlaylist-tab">
         <div class="formDiv">
-          <div id="songs">
+          <ul id="Songs">
 
-          </div>
-          <!-- <form class="py-4">
+          </ul>
+          <form class="py-4">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputArtist">Artist</label>
@@ -203,7 +217,7 @@
           </form>
           <button class="btn btn-primary" href="index.html" onclick="addPlayList()">
             Create Playlist/Album
-          </button> -->
+          </button>
         </div>
       </div>
     </main>
@@ -254,7 +268,7 @@
   <!-- <script src="albumsAndTracks.js"></script> -->
   <script>
     window.onload = async () => {
-      await loadArtists()
+      LoadArtists()
 
     }
   </script>
@@ -269,7 +283,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 
-  <!-- <script>
+  <script>
     $(function () {
       // Sidebar toggle behavior
       $("#sidebarCollapse").on("click", function () {
@@ -295,7 +309,18 @@
         }
       });
     };
-  </script> -->
+  </script>
+
+
+<script>window.onload = function() {
+    let artists = ["mars volta", "the clash", "cloud nothings"]
+
+    artists.forEach(element => {
+      
+      loadAlbums(element);
+    })
+  }
+</script>
 </body>
 
 </html>
